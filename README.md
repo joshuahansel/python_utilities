@@ -2,6 +2,14 @@
 
 This repository provides various utilities for python 3.
 
+## Getting Started
+
+To get started, you need to add the `src` directory to the `PYTHONPATH`
+environment variable. For example, in your `~/.bashrc` file,
+```
+export PYTHONPATH=$PYTHONPATH:~/python_utilities/src
+```
+
 ## Documentation
 
 The most complete documentation is given by the output of `doxygen`; to view this
