@@ -10,7 +10,7 @@ class PlotterLine(PlotterBase):
   def __init__(self, x_label, y_label, logscale_x=False, logscale_y=False, verbose=False):
     PlotterBase.__init__(self, x_label, y_label, logscale_x, logscale_y, verbose)
 
-  def addSet(self, x, y, set_name, color=-1, linetype=0, marker=0, scale=1, n_points=50):
+  def addSet(self, x, y, set_name, color=-1, linetype=1, marker=0, scale=1, n_points=50):
     # scale y values
     y = [yi * scale for yi in y]
 
