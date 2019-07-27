@@ -66,11 +66,9 @@ class PlotterBase(object):
       self.setYRange(ymin_new, ymax_new)
 
   ##
-  # Saves the plot to a file.
+  # Adds legend and catches warnings
   #
-  # @param[in] outputfile   Name of the output file.
-  #
-  def save(self, outputfile):
+  def finalize(self):
     # legend
     self.ax.legend(self.legend_entries, frameon=self.frame_legend, prop={'size':12}, loc=self.legend_location)
 
@@ -79,6 +77,21 @@ class PlotterBase(object):
     with warnings.catch_warnings():
       warnings.simplefilter("ignore")
       plt.tight_layout()
+
+  ##
+  # Shows (but does not save) the plot
+  #
+  def show(self):
+    self.finalize()
+    plt.show()
+
+  ##
+  # Saves the plot to a file.
+  #
+  # @param[in] outputfile   Name of the output file.
+  #
+  def save(self, outputfile):
+    self.finalize()
 
     # save the figure
     plt.savefig(outputfile, dpi=300)

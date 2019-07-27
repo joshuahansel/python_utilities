@@ -1,4 +1,4 @@
-from color_text import colorText
+from termcolor import colored
 
 def raiseException(msg):
-  raise Exception(colorText(msg, "red"))
+  raise Exception(colored(msg, "red"))
