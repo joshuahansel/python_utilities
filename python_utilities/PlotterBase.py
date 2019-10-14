@@ -48,7 +48,7 @@ class PlotterBase(object):
     self.ax.yaxis.set_major_formatter(FormatStrFormatter(y_format))
 
   def setXRange(self, xmin, xmax):
-    self.ax.set_xlim([xmin, ymin])
+    self.ax.set_xlim([xmin, xmax])
 
   def setYRange(self, ymin, ymax):
     self.ax.set_ylim([ymin, ymax])

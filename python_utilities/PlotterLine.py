@@ -7,10 +7,14 @@ from file_utilities import readCSVFile
 # Wrapper class to plot with Matplotlib
 #
 class PlotterLine(PlotterBase):
-  def __init__(self, x_label, y_label, logscale_x=False, logscale_y=False, verbose=False):
+  def __init__(self, x_label, y_label, logscale_x=False, logscale_y=False, verbose=False, scale_x=1):
     PlotterBase.__init__(self, x_label, y_label, logscale_x, logscale_y, verbose)
+    self.scale_x = scale_x
 
   def addSet(self, x, y, set_name, color=-1, linetype=1, marker=0, scale=1, n_points=50):
+    # scale x values
+    x = [xi * self.scale_x for xi in x]
+
     # scale y values
     y = [yi * scale for yi in y]
 
