@@ -10,9 +10,9 @@ markers = ["", ".", "x", "o", "s", "^", "D", "v", "*"]
 # Base class wrapper for Matplotlib
 #
 class PlotterBase(object):
-  def __init__(self, x_label, y_label, logscale_x=False, logscale_y=False, verbose=False):
+  def __init__(self, x_label, y_label, logscale_x=False, logscale_y=False, verbose=False, figsize=(8, 6)):
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=figsize)
     plt.rc('text', usetex=True)
     plt.rc('font', family='sans-serif')
 
