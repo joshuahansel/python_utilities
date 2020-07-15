@@ -3,7 +3,7 @@ from matplotlib.ticker import FormatStrFormatter
 import warnings
 
 colors = ['k','indianred','orange','lightgreen','cornflowerblue','slateblue','orchid','turquoise','peru']
-linetypes = [' ','-','--',':']
+linetypes = [' ','-','--',':','-.']
 markers = ["", ".", "x", "o", "s", "^", "D", "v", "*"]
 
 ##
