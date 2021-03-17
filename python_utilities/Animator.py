@@ -18,7 +18,7 @@ class Animator(object):
 
     self.fig = plt.figure(figsize=(x_width_per_column * n_subplots_x, y_width_per_row * n_subplots_y))
 
-  def nextSubplot(self, x_label, y_label, x_lim=None, y_lim=None, pad=False):
+  def nextSubplot(self, x_label, y_label, x_lim=None, y_lim=None, pad=False, logscale_y=False):
     self.i_subplot += 1
 
     # add legend for previous subplot, if there is one
@@ -43,6 +43,9 @@ class Animator(object):
       self.autoscale_y = False
     else:
       self.autoscale_y = True
+
+    if logscale_y:
+      self.ax_list[self.i_subplot].set_yscale('log')
 
     self.pad = pad
 
