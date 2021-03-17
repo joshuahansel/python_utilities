@@ -80,7 +80,7 @@ def writeCSVFile(data, filename, append=False, precision=5):
       row_data = list()
       for key in data:
         value = data[key][i]
-        if isinstance(value, (int, long, float)):
+        if isinstance(value, (int, float)):
           value_string = format_string % value
         else:
           value_string = value
