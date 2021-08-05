@@ -12,5 +12,6 @@ def readMOOSEXML(filename):
         data[vpp] = dict()
       if vector_name not in data[vpp]:
         data[vpp][vector_name] = []
-      data[vpp][vector_name].append([float(elem) for elem in vector_elem.text.split()])
+      if vector_elem.text:
+        data[vpp][vector_name].append([float(elem) for elem in vector_elem.text.split()])
   return data
