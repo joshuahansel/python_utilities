@@ -18,7 +18,7 @@ class Animator(object):
 
     self.fig = plt.figure(figsize=(x_width_per_column * n_subplots_x, y_width_per_row * n_subplots_y))
 
-  def nextSubplot(self, x_label, y_label, x_lim=None, y_lim=None, pad=False, logscale_y=False):
+  def nextSubplot(self, x_label, y_label, x_lim=None, y_lim=None, pad=False, logscale_y=False, scale_over_all_timesteps=True):
     self.i_subplot += 1
 
     # add legend for previous subplot, if there is one
@@ -48,6 +48,7 @@ class Animator(object):
       self.ax_list[self.i_subplot].set_yscale('log')
 
     self.pad = pad
+    self.scale_over_all_timesteps = scale_over_all_timesteps
 
     self.legend_entries = list()
     self.x.append(list())
@@ -63,8 +64,12 @@ class Animator(object):
       self.ax_list[i_subplot].set_xlim([x_min, x_max])
 
     if self.autoscale_y:
-      y_min = min([self.minOverTimesteps(yj) for yj in self.y[i_subplot]])
-      y_max = max([self.maxOverTimesteps(yj) for yj in self.y[i_subplot]])
+      if self.scale_over_all_timesteps:
+        y_min = min([self.minOverTimesteps(yj) for yj in self.y[i_subplot]])
+        y_max = max([self.maxOverTimesteps(yj) for yj in self.y[i_subplot]])
+      else:
+        y_min = min([min(yj[len(yj)-1]) for yj in self.y[i_subplot]])
+        y_max = max([max(yj[len(yj)-1]) for yj in self.y[i_subplot]])
       if self.pad:
         pad = 0.05 * abs(y_max)
         y_min -= pad
